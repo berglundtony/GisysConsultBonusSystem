@@ -1,0 +1,11 @@
+<table class="table table-hover">
+  <tr *ngFor="let pd of service.list">
+    <td (click)="PopulateForm(pd)">{{pd.ConsultID}}</td>
+    <td (click)="PopulateForm(pd)">{{pd.FirstName}}</td>
+    <td (click)="PopulateForm(pd)">{{pd.LastName}}</td>
+    <td (click)="PopulateForm(pd)">{{pd.EmploymentDate | date: 'yyyy-MM-dd'}}</td>
+    <td>
+      <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.ConsultID)"></i>
+    </td>
+  </tr>
+</table>
