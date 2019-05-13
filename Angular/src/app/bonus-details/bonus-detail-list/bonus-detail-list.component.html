@@ -1,0 +1,110 @@
+<div class="container-fluid"> 
+    <button class="btn btn-warning mb-3 float-right text-uppercase" (click)="onAddBonusDetail()"><i class="fa fa-plus"></i> Lägg till bonusinfo</button>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered row-border hover verticalDisplay" style="Width:100%">
+  <thead class="text-center thead-dark">
+    <!--th>Anställningsnummer</th><td (click)="PopulateForm(pd)">{{pd.ConsultID}}</td>  
+    <th>Namn</th><td (click)="PopulateForm(pd)">{{pd.FirstName}} + " " + {{pd.LastName}}</td>
+    <th>Nettoresultat</th><td (click)="PopulateForm(pd)">{{pd.NettoResult}}</td>
+    <th>Bonuspott</th><td (click)="PopulateForm(pd)">{{pd.BonusPot}}</td>
+    <th>Debiterade timmar</th><td (click)="PopulateForm(pd)">{{pd.ChargedHours}}</td>
+    <th>Debiterade med bonus</th><td (click)="PopulateForm(pd)">{{pd.ChargedHoursWithBonus}}</td>
+    <th>PeriodOfDeployment</th><td (click)="PopulateForm(pd)">{{pd.PeriodOfDeployment}}</td>
+    <th>Datum</th> <td (click)="PopulateForm(pd)">{{pd.BonusDate | date: 'yyyy-MM-dd'}}</td-->
+    <tr>
+      <th>Anställningsnummer</th> 
+      <th>Namn</th>
+      <th>Nettoresultat</th>
+      <th>Bonuspott</th>
+      <th>Debiterade timmar</th>
+      <th>Debiterade med bonus</th>
+      <th>Anställningstid i år</th>
+      <th>Samanlagda bonustimmar</th>
+      <th>Bonus i SEK</th>
+      <th>Datum</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bonus of bonusdetails" class="text-center">
+      <td>{{bonus.ConsultID}}</td>
+      <td>{{bonus.Fullname}}</td>
+      <td>{{bonus.NetResult}}</td>
+      <td>{{bonus.BonusPot }}</td>
+      <td>{{bonus.ChargedHours}}</td>
+      <td>{{bonus.ChargedHoursWithBonus}}</td>
+      <td>{{bonus.PeriodOfEmployment}}</td>
+      <td>{{bonus.TotalHoursWithBonus}}</td>
+      <td>{{bonus.BonusInMoney}}</td>
+      <td>{{bonus.BonusDate | date: 'yyyy-MM-dd'}}</td>
+      <td>
+        <div class="btn-group mt-2" role="group">
+          <button type="button" class="btn btn-success" (click)= "onSelect(bonus)"><i class="fas fa-list"></i></button>
+          <button type="button" class="btn btn-danger" (click)="onDelete(bonus)"><i class="fas fa-trash"></i></button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- ADD BONUSDETAIL MODAL START-->
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title">Lägg till Bonusinformation</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p class="list-group-item active text-center text-uppercase">{{modalMessage}}</p>
+      <form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="ConsultID"><i class="fa fa-pencil-square-o"></i></span>
+              </div>
+              <input type="text" id="ConsultID" formControlName="ConsultID" class="form-control" placeholder="Anställningsnummer" aria-label="name" aria-describedby="ConsultID">
+            </div>
+            <div class="errorMessage" *ngIf="ConsultID.touched && ConsultID.errors">
+              <span *ngIf="ConsultID.hasError('required')">Anställningsnummer krävs.</span>
+              <span *ngIf="ConsultID.hasError('min')">Negativa tal är inte tillåtet.</span>
+              <span *ngIf="ConsultID.hasError('max')">Maxtalet för anställningsnummer är 9000.</span>
+            </div>
+          </li>
+          <li class="list-group-item">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="NetResult"><i class="fa fa-pencil-square-o"></i></span>
+                </div>
+                <input type="text"  id="NetResult" formControlName="NetResult" class="form-control" placeholder="Netto resultat" aria-label="Description" aria-describedby="NetResult">
+              </div>
+              <div class="errorMessage" *ngIf="NetResult.touched && NetResult.errors">
+                <span *ngIf="NetResult.hasError('required')">Företagets nettoresultat krävs.</span>
+                <span *ngIf="NetResult.hasError('min')">Negativa tal är inte tillåtet.</span>
+                <span *ngIf="NetResult.hasError('max')">Maxtalet för nettoresultatet är 10000000.</span>
+              </div>
+          </li>
+          <li class="list-group-item">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="ChargedHours"><i class="fa fa-pencil-square-o"></i></span>
+              </div>
+              <input type="text"  id="ChargedHours" formControlName="ChargedHours" class="form-control" placeholder="Debiterade timmar" aria-label="Description" aria-describedby="ChargedHours">
+            </div>
+            <div class="errorMessage" *ngIf="ChargedHours.touched && ChargedHours.errors">
+              <span *ngIf="ChargedHours.hasError('required')">Debiterade timmar krävs.</span>
+              <span *ngIf="ChargedHours.hasError('min')">Negativa tal är inte tillåtet.</span>
+              <span *ngIf="ChargedHours.hasError('max')">Maxtalet för debiterade timmar är 600.</span>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <button [disabled]="insertForm.invalid"  class="btn btn-primary btn-block">Lägg till</button>
+          </li>
+        </ul>
+  
+      </form>
+  
+    </div>
+  </ng-template>
+</div>
+
+

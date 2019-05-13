@@ -1,0 +1,21 @@
+/*table.verticalDisplay thead{
+    float:left;
+}
+
+table.verticalDisplay thead th{
+    display:block;
+}
+
+table.verticalDisplay tbody{
+    float:left;
+}
+
+table.verticalDisplay tbody td{
+    display:block;
+} */
+
+.table .thead-dark th {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.0;
+}
