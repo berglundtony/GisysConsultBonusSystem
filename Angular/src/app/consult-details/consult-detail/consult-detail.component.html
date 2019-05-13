@@ -1,0 +1,37 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="ConsultID" [value]="service.formData.ConsultID">
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+            <i class="fas fa-user-circle" [class.green-icon]="FirstName.valid" [class.red-icon]="FirstName.invalid && FirstName.touched"></i>
+        </div>
+      </div>
+      <input name="FirstName" #FirstName="ngModel" [(ngModel)]="service.formData.FirstName" class="form-control" placeholder="Förnamn" required/>
+    </div>
+  </div>
+  <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-user-circle" [class.green-icon]="LastName.valid" [class.red-icon]="LastName.invalid && LastName.touched"></i>
+          </div>
+        </div>
+        <input name="LastName" #LastName="ngModel" [(ngModel)]="service.formData.LastName" class="form-control" placeholder="Efternamn" required/>
+      </div>
+    </div>
+  <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+              <i class="fas fa-calendar-alt"  [class.green-icon]="EmloymentDate.valid" [class.red-icon]="EmloymentDate.invalid && EmloymentDate.touched"></i>
+          </div>
+        </div>
+        <input type="date" id="EmloymentDate" name="EmloymentDate" #EmloymentDate="ngModel" [(ngModel)]="service.formData.EmloymentDate"  (ngModelChange)="onChange($event)"  class="form-control" placeholder="yyyy-MM-dd"  
+      maxlength="10" minlength="10" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-lg btn-block" [disabled]="form.invalid" type="submit"><i class="fas fa-database"></i>Skicka</button>
+    </div>
+</form>
