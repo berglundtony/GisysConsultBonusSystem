@@ -1,0 +1,134 @@
+<ng-template #nobonus>
+    <h2>No BonusDetail to Display</h2>
+  </ng-template>
+  
+  <div class="" *ngIf="bonusDetail;else nobonus">
+    <div class="card">
+      <div class="row">
+          <div class="col-sm-7">
+            <h3 class="title mb-3">{{bonusDetail.Fullname | uppercase}}</h3>
+          </div> <!-- col.// -->
+      </div>
+      <div class="row">
+          <div class="col-sm-7">
+            <p class="price-detail-wrap">
+              <span class="h3">
+                <span class="consultID"></span><span class="num">{{bonusDetail.ConsultID}}</span>
+              </span>
+            </p> <!-- price-detail-wrap .// -->
+          </div> <!-- col.// -->
+          </div>
+          <div class="row">
+              <div class="col-sm-7">
+            <dl class="item-property">
+              <dt class="text-uppercase text-primary"><u>Nettoresultat</u></dt>
+              <dd>
+                <p>
+                    <span class="netResult">SEK </span><span class="num">{{bonusDetail.NetResult}}</span>
+                </p>
+              </dd>
+          </dl>
+        </div> <!-- col.// -->
+        </div> <!-- row.// -->
+            <div class="row">
+            <div class="col-sm-7">
+                <dl class="param param-inline">
+                      <dl class="item-property">
+                          <dt class="text-uppercase text-primary"><u>Bonuspott</u></dt>
+                          <dd>
+                            <p>
+                                <span class="BonusPot">SEK </span><span class="num">{{bonusDetail.BonusPot}}</span>
+                            </p>
+                          </dd>
+                        </dl>
+                </dl>  <!-- item-property /div--> <!-- row.// -->
+              </div> <!-- col.// -->
+      </div> <!--row.// -->
+      <div class="row">
+          <div class="col-sm-7">
+              <dl class="param param-inline">
+                    <dl class="item-property">
+                        <dt class="text-uppercase text-primary"><u>Anställningstid i år</u></dt>
+                        <dd>
+                          <p>
+                              <span class="PeriodOfEmployment"></span><span class="num">{{bonusDetail.PeriodOfEmployment}}</span>
+                          </p>
+                        </dd>
+                      </dl>
+              </dl>  <!-- item-property /div--> <!-- row.// -->
+            </div> <!-- col.// -->
+    </div> <!--row.// -->
+    <div class="row">
+        <div class="col-sm-7">
+            <dl class="param param-inline">
+                  <dl class="item-property">
+                      <dt class="text-uppercase text-primary"><u>Debiterade timmar</u></dt>
+                      <dd>
+                        <p>
+                            <span class="ChargedHours"></span><span class="num">{{bonusDetail.ChargedHours}}</span>
+                        </p>
+                      </dd>
+                    </dl>
+            </dl>  <!-- item-property /div--> <!-- row.// -->
+          </div> <!-- col.// -->
+  </div> <!--row.// -->
+  <div class="row">
+      <div class="col-sm-7">
+          <dl class="param param-inline">
+                <dl class="item-property">
+                    <dt class="text-uppercase text-primary"><u>Bonustimmar</u></dt>
+                    <dd>
+                      <p>
+                          <span class="ChargedHoursWithBonus"></span><span class="num">{{bonusDetail.ChargedHoursWithBonus}}</span>
+                      </p>
+                    </dd>
+                  </dl>
+          </dl>  <!-- item-property /div--> <!-- row.// -->
+        </div> <!-- col.// -->
+</div> <!--row.// -->
+<div class="row">
+    <div class="col-sm-7">
+        <dl class="param param-inline">
+              <dl class="item-property">
+                  <dt class="text-uppercase text-primary"><u>Totala bonustimmar</u></dt>
+                  <dd>
+                    <p>
+                        <span class="TotalHoursWithBonus"></span><span class="num">{{bonusDetail.TotalHoursWithBonus}}</span>
+                    </p>
+                  </dd>
+                </dl>
+        </dl>  <!-- item-property /div--> <!-- row.// -->
+      </div> <!-- col.// -->
+</div> <!--row.// -->
+<div class="row">
+    <div class="col-sm-7">
+        <dl class="param param-inline">
+              <dl class="item-property">
+                  <dt class="text-uppercase text-primary"><u>Bonus</u></dt>
+                  <dd>
+                    <p>
+                        <span class="BonusInMoney"></span>SEK <span class="num">{{bonusDetail.BonusInMoney}}</span>
+                    </p>
+                  </dd>
+                </dl>
+        </dl>  <!-- item-property /div--> <!-- row.// -->
+      </div> <!-- col.// -->
+  </div> <!--row.// -->
+      <div class="row">
+          <div class="col-sm-7">
+              <dl class="param param-inline">
+                    <dl class="item-property">
+                        <dt class="text-uppercase text-primary"><u>Datum</u></dt>
+                        <dd>
+                          <p>
+                              <span class="BonusDate"></span><span class="num">{{bonusDetail.BonusDate | date: 'yyyy-MM-dd'}}</span>
+                          </p>
+                        </dd>
+                      </dl>
+              </dl>  <!-- item-property /div--> <!-- row.// -->
+            </div> <!-- col.// -->
+      </div> <!--row.// -->
+      <button class="btn btn-primary float-left" (click)="onBackToList()">tillbaka till listan</button>
+  </div> <!-- card.// -->
+</div> 
+ 
