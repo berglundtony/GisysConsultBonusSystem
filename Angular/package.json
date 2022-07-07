@@ -29,7 +29,7 @@
     "datatables.net": "1.10.19",
     "datatables.net-dt": "1.10.19",
     "jquery": "3.4.1",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "ngx-bootstrap": "^4.1.1",
     "ngx-toastr": "10.0.2",
     "popper.js": "1.15.0",
